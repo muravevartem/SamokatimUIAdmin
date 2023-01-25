@@ -10,6 +10,7 @@ env:
   PROJECT_NAME: samokatim-client-ui
   EXTERNAL_PORT: 80
   APP_PORT: 80
+  NODE_NO_WARNINGS: 1
 
 jobs:
   build:
