@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {MapContainer, Marker, TileLayer, useMapEvents} from "react-leaflet";
 import L, {Icon as IconLeaflet, LatLng} from "leaflet";
-import 'leaflet/dist/leaflet.css';
 import {eventChannel, GetLocation} from "../events/EventChannel";
-import {App, Button, Divider, Modal, Select, SelectProps, Space, Switch} from "antd";
+import {App, Button, Divider, Modal, Select, Space, Switch} from "antd";
 import {AimOutlined, FilterOutlined} from "@ant-design/icons";
 import FormItem from "antd/es/form/FormItem";
 import {beautify, EquipmentStatus} from "../models/equipments";
-import {stat} from "fs";
 import Title from "antd/es/typography/Title";
 
 
@@ -38,15 +36,11 @@ export const MapComponent = () => {
 
     return (
         <div
-            style={{
-                height: '100%',
-                width: '100%'
-            }}
         >
             <MapContainer
                 style={{
+                    height: '100vh',
                     width: '100%',
-                    height: '100%'
                 }}
                 center={[51.505, -0.09]}
                 zoom={13}
@@ -126,7 +120,8 @@ const CurrentLocationMarker = () => {
 
 
     useEffect(() => {
-        eventChannel.subscribe(GetLocation.name, event => map.locate())
+        map.locate()
+        // eventChannel.subscribe(GetLocation.name, event => map.locate())
     }, [])
 
     return position === null
