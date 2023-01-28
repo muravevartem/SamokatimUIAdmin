@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: ["master", "develop", "ci-cd"]
+    branches: [ "master", "develop", "feature/**" ]
   pull_request:
-    branches: ["master", "develop", "ci-cd"]
+    branches: [ "master", "develop", "feature/**" ]
 
 env:
   PROJECT_NAME: samokatim-client-ui

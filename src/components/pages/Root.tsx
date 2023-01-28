@@ -1,13 +1,11 @@
-import React from "react";
-import {Avatar, Badge, Layout, Menu, theme} from "antd";
+import React, {useState} from "react";
+import {Layout, Menu, theme} from "antd";
 import Sider from "antd/es/layout/Sider";
-import {MdBikeScooter, MdMenu, MdPedalBike} from "react-icons/md";
+import {MdBikeScooter, MdMenu} from "react-icons/md";
 import {Content} from "antd/es/layout/layout";
 import {Outlet, useNavigate} from "react-router-dom";
-import {useState} from "react";
-import {BiMapAlt, BiUser, BiUserCircle} from "react-icons/bi";
+import {BiMapAlt, BiUser} from "react-icons/bi";
 import {HiUserGroup} from "react-icons/hi";
-import {UserOutlined} from "@ant-design/icons";
 
 export const Root = () => {
     const [collapsed, setCollapsed] = useState(true);
@@ -67,6 +65,7 @@ export const Root = () => {
             <Layout>
                 <Content
                     style={{
+                        overflow: "auto",
                         minHeight: '100vh'
                     }}>
                     <Outlet/>

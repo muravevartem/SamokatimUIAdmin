@@ -4,7 +4,7 @@ import './index.css';
 import 'leaflet/dist/leaflet.css'
 import moment from "moment";
 import {MyApp} from "./MyApp";
-
+import 'moment/locale/ru'
 
 moment.locale('ru')
 
