@@ -39,7 +39,7 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
       - name: Deploy to server
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'sudo docker stop client-ui; sudo docker rm client-ui; sudo docker rmi muravevartem/samokatim-client-ui; sudo docker run -p 80:80 --name $PROJECT_NAME muravevartem/samokatim-client-ui:latest;'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker stop client-ui; docker rm client-ui; docker rmi muravevartem/samokatim-client-ui; docker run -p 80:80 --name client-ui muravevartem/samokatim-client-ui:latest'
 
     
 
