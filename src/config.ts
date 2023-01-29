@@ -4,7 +4,7 @@ const generateServerUrl = () => {
     const nodeenv = process.env.NODE_ENV;
     console.log(nodeenv)
     if (nodeenv === 'production')
-        return 'http://api.1218407-cu57808.tw1.ru'
+        return 'https://api.1218407-cu57808.tw1.ru'
     return 'localhost:8080';
 }
 
