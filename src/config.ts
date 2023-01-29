@@ -1,6 +1,14 @@
 import axios from "axios";
 
-export const SERVER_URL = "http://127.0.0.1:8080";
+const generateServerUrl = () => {
+    const nodeenv = process.env.NODE_ENV;
+    console.log(nodeenv)
+    if (nodeenv === 'production')
+        return 'api.1218407-cu57808.tw1.ru'
+    return 'localhost:8080';
+}
+
+export const SERVER_URL = generateServerUrl();
 
 const $api = axios.create({
     withCredentials: true,
