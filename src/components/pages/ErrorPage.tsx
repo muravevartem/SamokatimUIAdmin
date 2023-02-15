@@ -1,30 +1,20 @@
 import React from "react";
-import Title from "antd/es/typography/Title";
-import {Space} from "antd";
+import {Button, Result} from "antd";
+import {useNavigate} from "react-router-dom";
 
 
 export const ErrorPage = () => {
+    let navigate = useNavigate();
     return (
-        <div
-            style={{
-                backgroundImage: 'url(./error-bg.jpg)',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh'
-            }}>
-            <Space
-                direction='vertical'
-                align='center'
-                style={{
-                    width: '100%',
-                    backgroundColor: 'rgba(255,255,255,0.68)'
-                }}>
-                <Title level={1}>Что-то пошло не так...</Title>
-            </Space>
+        <div style={{
+            height: '100vh',
+            width: '100%'
+        }}
+        >
+            <Result status='404'
+                    title="Страница не найдена"
+                    extra={<Button type='primary' onClick={() => navigate(-1)}>Вернуться назад</Button>}
+            />
         </div>
     )
 }

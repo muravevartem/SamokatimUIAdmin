@@ -51,7 +51,7 @@ export const Root = () => {
                             key: 2,
                             icon: <MdBikeScooter/>,
                             label: 'Оборудование',
-                            onClick: () => navigate('/')
+                            onClick: () => navigate('/equipments')
                         },
                         {
                             key: 3,

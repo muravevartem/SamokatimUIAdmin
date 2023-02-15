@@ -3,6 +3,8 @@ import {MapContainer, Polyline, TileLayer} from "react-leaflet";
 import {LatLngExpression} from "leaflet";
 import {App} from "antd";
 import {TransportTimePoint} from "../models/locations";
+import {useSearchParams} from "react-router-dom";
+import {EquipmentSmallDashboard} from "./EquipmentSmallDashboard";
 
 const center: LatLngExpression = [55.754028, 37.619909];
 const zoom = 13;
@@ -69,10 +71,12 @@ const MapWindow = ({setMap, route}: MapWindowProps) => {
     </MapContainer>
 }
 
-
 export const MapComponent = () => {
     const [map, setMap] = useState<any>(null);
-
+    let [searchParams, setSearchParams] = useSearchParams();
+    let [showEquipment, setShowEquipment] = useState(searchParams.has('equipment'));
+    console.log(searchParams)
+    let equipmentid = searchParams.get('equipment')
     const displayMap = useMemo(
         () => (
             <MapWindow setMap={setMap}/>
@@ -83,6 +87,8 @@ export const MapComponent = () => {
     return (
         <div style={{height: "100vh"}}>
             {displayMap}
+            {showEquipment && equipmentid ? <EquipmentSmallDashboard equipmentId={Number.parseInt(equipmentid)}
+                                                                     onClose={() => setShowEquipment(false)}/> : null}
             {map ? <MapControl map={map}/> : null}
         </div>
     )
