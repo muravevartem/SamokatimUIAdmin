@@ -8,3 +8,9 @@ export type Company = {
     inn?: string,
 
 }
+
+
+export type CompanyType = {
+    id?: number,
+    name: string
+}

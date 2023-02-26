@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Space, Table, Tag} from "antd";
+import {Button, Space, Table, Tag} from "antd";
 import {ColumnType, TablePaginationConfig} from "antd/es/table";
 import {beautifyType, Equipment, EquipmentType} from "../../models/equipments";
 import {PresetColorKey} from "antd/es/theme/interface/presetColors";
 import {FilterValue, SorterResult} from "antd/es/table/interface";
+import {useNavigate} from "react-router-dom";
 
 const getColorOfEquipmentType = (type?: EquipmentType): PresetColorKey => {
     switch (type) {
@@ -124,6 +125,7 @@ interface TableParams {
 }
 
 export const EquipmentPage = () => {
+    let navigate = useNavigate();
     const [data, setData] = useState<Equipment[]>([])
     const [loading, setLoading] = useState(true)
     const [tableParams, setTableParams] = useState<TableParams>({
@@ -161,13 +163,18 @@ export const EquipmentPage = () => {
         <div style={{
             padding: 10
         }}>
-            <Table columns={columns}
-                   rowKey={record => record.id ?? 0}
-                   dataSource={data}
-                   loading={loading}
-                   onChange={handleTableChange}
-                   pagination={tableParams.pagination}
-            />
+            <Space direction={"vertical"} style={{width: '100%'}}>
+                <Button type='primary' onClick={() => navigate('/equipments/add')}>
+                    Добавить
+                </Button>
+                <Table columns={columns}
+                       rowKey={record => record.id ?? 0}
+                       dataSource={data}
+                       loading={loading}
+                       onChange={handleTableChange}
+                       pagination={tableParams.pagination}
+                />
+            </Space>
         </div>
     )
 }
