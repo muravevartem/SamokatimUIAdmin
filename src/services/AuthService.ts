@@ -1,6 +1,7 @@
 import {Gender, User} from "../models/users";
 import moment from "moment/moment";
 import {Role} from "../models/roles";
+import {useKeycloak} from "@react-keycloak/web";
 
 export class AuthService {
     roles: Role[] = [
@@ -22,9 +23,17 @@ export class AuthService {
         return this.currentUser !== null
     }
 
-    getCurrentRoles(): Role[] {
-        return this.roles;
+
+    private ACCESS_TOKEN = 'access_token';
+
+    saveAccessToken(token: string) {
+        localStorage.setItem(this.ACCESS_TOKEN, token);
     }
+
+    getAccessToken(): string {
+        return localStorage.getItem(this.ACCESS_TOKEN)?? 'DUMMY';
+    }
+
 }
 
 export const authService = new AuthService();

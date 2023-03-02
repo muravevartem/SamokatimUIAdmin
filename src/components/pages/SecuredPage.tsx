@@ -3,9 +3,9 @@ import {Role} from "../../models/roles";
 import {roleService} from "../../services/RoleService";
 import {useNavigate} from "react-router-dom";
 import {authService} from "../../services/AuthService";
+import {useKeycloak} from "@react-keycloak/web";
 
 type SecuredPageProps = {
-    roles: Role[],
     children: ReactElement
 }
 
@@ -13,13 +13,10 @@ type SecuredPageProps = {
 export const SecuredPage = (props: SecuredPageProps) => {
     let navigate = useNavigate();
 
-    let currentRoles = authService.getCurrentRoles();
+    const {keycloak, initialized} = useKeycloak();
 
-    if (!authService.isAuthenticated())
-        navigate('/login')
-
-    if (!props.roles.some(value => currentRoles.includes(value)))
-        navigate('/access-denied')
+    if (!keycloak.authenticated)
+        return <></>
 
     return (
         <>

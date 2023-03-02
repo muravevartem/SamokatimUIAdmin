@@ -5,10 +5,11 @@ import {routes} from "./routes";
 import ruRu from 'antd/locale/ru_RU';
 
 export const MyApp = () => (
-    <ConfigProvider locale={ruRu}>
-        <App>
-            <RouterProvider router={routes}/>
-        </App>
-    </ConfigProvider>
+        <ConfigProvider locale={ruRu}>
+            <App>
+                <RouterProvider router={routes}/>
+            </App>
+        </ConfigProvider>
+
 
 )

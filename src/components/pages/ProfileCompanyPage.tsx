@@ -1,11 +1,35 @@
-import React from "react";
-import {Space, Tooltip} from "antd";
-import Title from "antd/es/typography/Title";
+import React, {useEffect} from "react";
+import {Space, Tag} from "antd";
 import {companyService} from "../../services/CompanyService";
 import Typography from "antd/es/typography/Typography";
+import {useKeycloak} from "@react-keycloak/web";
+import {useNavigate} from "react-router-dom";
+
 
 export const ProfileCompanyPage = () => {
+    let {keycloak, initialized} = useKeycloak();
+    let navigate = useNavigate();
+
+    function getCurrentRoles(): string[] {
+        let ra = keycloak.tokenParsed?.resource_access ?? {'smkt': {roles: []}};
+        return ra['smkt'].roles
+    }
+
+    useEffect(() => {
+            if (!keycloak.authenticated) {
+                navigate('/')
+            }
+        }, []
+    )
+
+
     let company = companyService.getCurrentCompany();
+
+    function getEmail():string {
+        return keycloak.tokenParsed?.email;
+    }
+
+
     return (
         <Space
             style={{
@@ -13,18 +37,11 @@ export const ProfileCompanyPage = () => {
             }}
             direction='vertical'
         >
-            <Title>
-                {company.name}
-            </Title>
             <Typography>
-                {company.description}
+                {getEmail()}
             </Typography>
-            <Tooltip title={company.registrationDate?.fromNow()}>
-                <span style={{fontWeight: 'bolder'}}>Зарегистрирован: </span>
-                <span>
-                    {company.registrationDate?.format('LL')}
-                </span>
-            </Tooltip>
+            <span style={{fontWeight: 'bolder'}}>Роль: </span>
+            <Space>{getCurrentRoles().map(role => <Tag key={role}>{role}</Tag>)}</Space>
         </Space>
     )
 }
