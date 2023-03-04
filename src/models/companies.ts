@@ -6,11 +6,12 @@ export type Company = {
     description?: string,
     registrationDate?: Moment,
     inn?: string,
+    type?: CompanyType
 
 }
 
 
 export type CompanyType = {
     id?: number,
-    name: string
+    name?: string
 }
