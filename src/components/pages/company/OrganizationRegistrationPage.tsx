@@ -53,10 +53,26 @@ export const OrganizationRegistrationPage = () => {
                     org={organization}
                     setOrg={setOrganization}
                     loading={loading}/>
-                <ButtonGroup>
-                    <Button onClick={() => navigate(-1)}>Отмена</Button>
-                    <Button variant='contained' onClick={() => createOrg(organization)}>Готово</Button>
-                </ButtonGroup>
+                {(!alert || alert.color !== 'success') &&
+                    <ButtonGroup>
+                        <Button
+                            onClick={() => navigate(-1)}
+                        >
+                            Отмена
+                        </Button>
+                        <Button
+                            disabled={alert?.color === 'error'}
+                            variant='contained'
+                            onClick={() => createOrg(organization)}
+                        >
+                            Готово
+                        </Button>
+                    </ButtonGroup>
+                }
+                {(alert && alert.color === 'success') &&
+                    <Button variant='contained' onClick={() => navigate('/organizations')}>Список организаций</Button>
+                }
+
             </Stack>
         </div>
     )
