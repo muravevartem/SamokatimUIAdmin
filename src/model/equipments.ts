@@ -1,4 +1,4 @@
-import {Company} from "./companies";
+import {Organization} from "./organizations";
 
 export enum EquipmentStatus {
     FREE,
@@ -42,6 +42,6 @@ export function beautify(status: EquipmentStatus) {
 export type Equipment = {
     id?: number,
     name?: string,
-    owner?: Company,
+    owner?: Organization,
     type?: EquipmentType
 }

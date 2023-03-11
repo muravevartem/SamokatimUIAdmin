@@ -4,14 +4,17 @@ import {Outlet, useNavigate} from "react-router-dom";
 import {
     AppBar,
     Box,
-    Button, Drawer,
-    FormControlLabel,
-    FormGroup,
-    IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText,
+    Button,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
     Menu,
     MenuItem,
     Stack,
-    Switch,
     Toolbar,
     Typography
 } from "@mui/material";
@@ -23,66 +26,6 @@ export const Root = () => {
     let navigate = useNavigate();
 
     return (
-        // <Layout
-        //     style={{
-        //         minHeight: '100vh'
-        //     }}>
-        //     <Sider
-        //         trigger={<MdMenu/>}
-        //         collapsible
-        //         collapsed={collapsed}
-        //         onCollapse={(collapsed) => setCollapsed(collapsed)}
-        //         breakpoint="xl"
-        //         collapsedWidth='50'
-        //     >
-        //
-        //         <Menu
-        //             theme='dark'
-        //             mode='inline'
-        //             items={[
-        //                 {
-        //                     key: 0,
-        //                     icon: <BiUser/>,
-        //                     label: 'Личный кабинет',
-        //                     onClick: () => navigate('/lk')
-        //                 },
-        //                 {
-        //                     key: 1,
-        //                     icon: <BiMapAlt/>,
-        //                     label: 'Карта',
-        //                     onClick: () => navigate('/map')
-        //                 },
-        //                 {
-        //                     key: 2,
-        //                     icon: <MdBikeScooter/>,
-        //                     label: 'Оборудование',
-        //                     onClick: () => navigate('/equipments')
-        //                 },
-        //                 {
-        //                     key: 3,
-        //                     icon: <HiUserGroup/>,
-        //                     label: 'Клиенты',
-        //                     onClick: () => navigate('/clients')
-        //                 },
-        //                 {
-        //                     key: 4,
-        //                     icon: <BiGroup/>,
-        //                     label: 'Организации',
-        //                     onClick: () => navigate('/companies')
-        //                 }
-        //             ]}
-        //         />
-        //     </Sider>
-        //     <Layout>
-        //         <Content
-        //             style={{
-        //                 overflow: "auto",
-        //                 minHeight: '100vh'
-        //             }}>
-        //             <Outlet/>
-        //         </Content>
-        //     </Layout>
-        // </Layout>
         <Stack>
             <MenuAppBar/>
             <Outlet/>
@@ -122,7 +65,7 @@ export function ApplicationMenu(props: ApplicationMenuProps) {
                     </ListItemButton>
                 </ListItem>
                 <ListItem>
-                    <ListItemButton href='/companies'>
+                    <ListItemButton href='/organizations'>
                         <ListItemIcon>
                             <BiGroup/>
                         </ListItemIcon>

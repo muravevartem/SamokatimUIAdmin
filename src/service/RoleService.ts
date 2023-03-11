@@ -1,5 +1,3 @@
-import {Role} from "../models/roles";
-
 export class RoleService {
 
 }

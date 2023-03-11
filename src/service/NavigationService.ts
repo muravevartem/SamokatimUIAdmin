@@ -1,5 +1,5 @@
 import {DomUtil} from "leaflet";
-import getPosition = DomUtil.getPosition;
+
 
 export class NavigationService {
     private error: boolean = false

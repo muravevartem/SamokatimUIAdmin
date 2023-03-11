@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Button, Space, Table, Tag} from "antd";
 import {ColumnType, TablePaginationConfig} from "antd/es/table";
-import {beautifyType, Equipment, EquipmentType} from "../../models/equipments";
+import {beautifyType, Equipment, EquipmentType} from "../../model/equipments";
 import {PresetColorKey} from "antd/es/theme/interface/presetColors";
 import {FilterValue, SorterResult} from "antd/es/table/interface";
 import {useNavigate} from "react-router-dom";

@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {MapContainer, Polyline, TileLayer} from "react-leaflet";
 import {LatLngExpression} from "leaflet";
 import {App} from "antd";
-import {TransportTimePoint} from "../models/locations";
+import {TransportTimePoint} from "../model/locations";
 import {useSearchParams} from "react-router-dom";
 import {EquipmentSmallDashboard} from "./EquipmentSmallDashboard";
 

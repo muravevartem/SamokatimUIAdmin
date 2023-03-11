@@ -1,6 +1,6 @@
-import {Gender, User} from "../models/users";
+import {Gender, User} from "../model/users";
 import moment from "moment/moment";
-import {Role} from "../models/roles";
+import {Role} from "../model/roles";
 
 export class AuthService {
     roles: Role[] = [

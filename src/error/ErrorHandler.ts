@@ -1,34 +1,25 @@
 import {AxiosError} from "axios";
-import {ArgsProps} from "antd/es/notification/interface";
+import {AlertColor} from "@mui/material/Alert/Alert";
+
+export type AlertInfo = {
+    color: AlertColor,
+    message: string
+}
 
 export class ErrorHandler {
-    handleAxiosError(e: AxiosError): ArgsProps {
-        switch (e.status) {
-            case 404:
-                return {
-                    key: 'axios-error-404',
-                    message: 'Ресурс не найден'
-                }
-            case 403:
-                return {
-                    key: 'axios-error-403',
-                    message: 'Нет доступа'
-                }
-            case 401:
-                return {
-                    key: 'axios-error-401',
-                    message: 'Не авторизирован'
-                }
-            case 400:
-                return {
-                    key: 'axios-error-400',
-                    message: 'Невалидный запрос'
-                }
-        }
-        return {
-            key: 'unknown',
-            message: 'Неизвестная ошибка'
-        }
+    handleAxiosError(e: AxiosError): AlertInfo {
+        // @ts-ignore
+        let message = e.response.data.message;
+
+        return (message)
+            ? {
+                color: 'error',
+                message: message
+            }
+            : {
+                color: 'error',
+                message: 'Сервер не отвечает'
+            }
 
     }
 }

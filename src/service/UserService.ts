@@ -1,6 +1,3 @@
-import {Gender, User} from "../models/users";
-import moment from "moment";
-
 export class UserService {
 
 }

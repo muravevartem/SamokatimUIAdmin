@@ -1,5 +1,5 @@
 import React from "react";
-import {authService} from "../../services/AuthService";
+import {authService} from "../../service/AuthService";
 import {MapComponent} from "../MapComponent";
 
 export const MapPage = () => {

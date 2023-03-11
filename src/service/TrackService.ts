@@ -1,4 +1,4 @@
-import {TransportTimePoint} from "../models/locations";
+import {TransportTimePoint} from "../model/locations";
 import $api from "../config";
 
 export class TrackService {

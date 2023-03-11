@@ -5,8 +5,8 @@ import {ProfileCompanyPage} from "./components/pages/ProfileCompanyPage";
 import {ErrorPage} from "./components/pages/ErrorPage";
 import {EquipmentPage} from "./components/pages/EquipmentPage";
 import {EquipmentModPage} from "./components/pages/EquipmentModPage";
-import {CompanyModPage} from "./components/pages/company/CompanyModPage";
-import {CompanyPage} from "./components/pages/company/CompanyPage";
+import {OrganizationRegistrationPage} from "./components/pages/company/OrganizationRegistrationPage";
+import React from "react";
 
 
 export const routes = createBrowserRouter(
@@ -15,9 +15,8 @@ export const routes = createBrowserRouter(
             <Route path='' loader={() => redirect('/map')}/>
             <Route path='map' element={<MapPage/>}/>
             <Route path='lk' element={<ProfileCompanyPage/>}/>
-            <Route path='companies'>
-                <Route path='' element={<CompanyPage/>}/>
-                <Route path='new' element={<CompanyModPage/>}/>
+            <Route path='organizations'>
+                <Route path='new' element={<OrganizationRegistrationPage/>}/>
             </Route>
             <Route path='equipments'>
                 <Route path='' element={<EquipmentPage/>}/>
