@@ -1,8 +1,7 @@
 import React, {ReactElement} from "react";
-import {Role} from "../../models/roles";
-import {roleService} from "../../services/RoleService";
+import {Role} from "../../model/roles";
 import {useNavigate} from "react-router-dom";
-import {authService} from "../../services/AuthService";
+import {authService} from "../../service/AuthService";
 
 type SecuredPageProps = {
     roles: Role[],

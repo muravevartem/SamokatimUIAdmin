@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: ["master", "develop", "ci-cd"]
+    branches: [ "master", "develop", "feature/**" ]
   pull_request:
-    branches: ["master", "develop", "ci-cd"]
+    branches: [ "master", "develop", "feature/**" ]
 
 env:
   PROJECT_NAME: samokatim-client-ui
@@ -39,7 +39,7 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
       - name: Deploy to server
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker stop client-ui; docker rm client-ui; docker rmi muravevartem/samokatim-client-ui; docker run -d -p 443:443 --name client-ui muravevartem/samokatim-client-ui:latest'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker-compose pull client-ui; docker-compose up --force-recreate -d client-ui'
 
     
 
