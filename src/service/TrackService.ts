@@ -1,9 +1,9 @@
 import {TransportTimePoint} from "../model/locations";
-import $api from "../config";
+import {$apiMonitor} from "../config";
 
 export class TrackService {
     async getTrack(transportId: number): Promise<TransportTimePoint[]> {
-        let response = await $api.get<TransportTimePoint[]>(
+        let response = await $apiMonitor.get<TransportTimePoint[]>(
             `/v1/track`,
             {
                 params:
