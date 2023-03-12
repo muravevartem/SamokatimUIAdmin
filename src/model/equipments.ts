@@ -24,7 +24,7 @@ export function beautifyType(type?: EquipmentType) {
         case EquipmentType.SCOOTER_EL:
             return "Электросамокат"
         default:
-            return "Покемон"
+            return "Неизвестно"
     }
 }
 
@@ -42,6 +42,28 @@ export function beautify(status: EquipmentStatus) {
 export type Equipment = {
     id?: number,
     name?: string,
-    owner?: Organization,
-    type?: EquipmentType
+    owner?: Organization
+}
+
+export type EquipmentAttribute = {
+    id?: number,
+    name?: string
+}
+
+export type EquipmentParameter = {
+    id?: number,
+    attribute?: EquipmentAttribute,
+    value?: string
+}
+
+export type EquipmentAttributeRequest = {
+    attributeId?: number,
+    value?: string
+}
+
+export type EquipmentRequest = {
+    id?: number,
+    name?: string,
+    ownerId?: number,
+    parameters?: EquipmentAttributeRequest[]
 }

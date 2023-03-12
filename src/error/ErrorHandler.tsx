@@ -5,7 +5,7 @@ import {MdErrorOutline} from "react-icons/md";
 
 export type AlertInfo = {
     color: AlertColor,
-    message: string,
+    message: React.ReactNode,
     icon?: React.ReactNode
 }
 
