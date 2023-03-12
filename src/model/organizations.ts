@@ -5,11 +5,5 @@ export type Organization = {
     inn?: string,
     tel?: string,
     email?: string,
-    status?: OrganizationStatus
-}
-
-export enum OrganizationStatus {
-    PENDING,
-    APPROVED,
-    DENIED
+    status?: 'PENDING' | 'APPROVED' | 'DENIED'
 }
