@@ -8,6 +8,8 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
+    Grid,
+    IconButton,
     Stack,
     TextField,
     Typography
@@ -19,7 +21,7 @@ import {organizationService} from "../../../service/OrganizationService";
 import {AxiosError} from "axios";
 import {AlertInfo, errorHandler} from "../../../error/ErrorHandler";
 import {TelField} from "../../custom/Components";
-import {MdApproval} from "react-icons/md";
+import {MdApproval, MdSearch} from "react-icons/md";
 import isEmpty = validator.isEmpty;
 import isNumeric = validator.isNumeric;
 
@@ -184,11 +186,23 @@ const OrganizationModificationComponent = (props: {
     loading: boolean
 }) => {
     let {org, setOrg, loading} = props;
+
+    async function searchByInn() {
+        try {
+            if (org.inn) {
+                setOrg(await organizationService.searchByInn(org.inn));
+            }
+        } catch (e) {
+
+        }
+    }
+
     return (
         <Stack spacing={2}>
             <TextField
                 fullWidth
                 variant='standard'
+                disabled={(!!org.inn)}
                 error={!!org.name && isEmpty(org.name)}
                 label='Название'
                 value={org.name ?? ''}
@@ -198,26 +212,39 @@ const OrganizationModificationComponent = (props: {
                         name: event.target.value,
                         fullName: event.target.value
                     })}/>
-            <TextField
-                fullWidth
-                variant='standard'
-                error={
-                    (!!org.inn)
-                    && (
-                        !isNumeric(org.inn ?? '')
-                        || (org.inn?.length !== 10 && org.inn?.length !== 12)
-                    )
-                }
-                label='ИНН'
-                placeholder='xxxxxxxxxx'
-                value={org.inn ?? ''}
-                onChange={event =>
-                    setOrg({
-                        ...org,
-                        inn: isEmpty(event.target.value) || isNumeric(event.target.value)
-                            ? event.target.value
-                            : org.inn
-                    })}/>
+            <Grid container alignItems='end'>
+                <Grid item xs={10}>
+                    <TextField
+                        fullWidth
+                        variant='standard'
+                        error={
+                            (!!org.inn)
+                            && (
+                                !isNumeric(org.inn ?? '')
+                                || (org.inn?.length !== 10 && org.inn?.length !== 12)
+                            )
+                        }
+                        label='ИНН'
+                        placeholder='xxxxxxxxxx'
+                        value={org.inn ?? ''}
+                        onChange={event =>
+                            setOrg({
+                                ...org,
+                                inn: isEmpty(event.target.value) || isNumeric(event.target.value)
+                                    ? event.target.value
+                                    : org.inn
+                            })}
+                    />
+                </Grid>
+                <Grid item xs={2}>
+                    <IconButton
+                        onClick={searchByInn}
+                        color='primary'
+                    >
+                        <MdSearch/>
+                    </IconButton>
+                </Grid>
+            </Grid>
             <TelField
                 fullWidth
                 variant='standard'
