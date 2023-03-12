@@ -126,7 +126,8 @@ export const EquipmentCreationPage = () => {
             setLoading(true);
             let createdEquipment = await equipmentService.create({
                 id: equipment.id,
-                name: equipment.name
+                name: equipment.name,
+                ownerId: equipment.owner?.id
             });
             navigate(`/equipments/${createdEquipment.id}`)
         } catch (e) {
