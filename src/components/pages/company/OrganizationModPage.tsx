@@ -184,7 +184,6 @@ const OrganizationModificationComponent = (props: {
     loading: boolean
 }) => {
     let {org, setOrg, loading} = props;
-    console.log(org.tel)
     return (
         <Stack spacing={2}>
             <TextField

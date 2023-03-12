@@ -3,12 +3,12 @@ import {Root} from "./components/pages/Root";
 import {MapPage} from "./components/pages/MapPage";
 import {ProfileCompanyPage} from "./components/pages/ProfileCompanyPage";
 import {ErrorPage} from "./components/pages/ErrorPage";
-import {EquipmentPage} from "./components/pages/EquipmentPage";
-import {EquipmentModPage} from "./components/pages/EquipmentModPage";
 import {OrganizationModificationPage, OrganizationModPage} from "./components/pages/company/OrganizationModPage";
 import React from "react";
 import {OrganizationPage} from "./components/pages/company/OrganizationPage";
 import {Breadcrumbs, Link, Typography} from "@mui/material";
+import {EquipmentCreationPage, EquipmentModificationPage} from "./components/pages/equipment/EquipmentModPage";
+import {EquipmentPage} from "./components/pages/equipment/EquipmentPage";
 
 
 export const routes = createBrowserRouter(
@@ -24,8 +24,8 @@ export const routes = createBrowserRouter(
             </Route>
             <Route path='equipments'>
                 <Route path='' element={<EquipmentPage/>}/>
-                <Route path=':equipmentId' element={<EquipmentModPage/>}/>
-                <Route path='new' element={<EquipmentModPage/>}/>
+                <Route path='new' element={<EquipmentCreationPage/>}/>
+                <Route path=':id' element={<EquipmentModificationPage/>}/>
             </Route>
         </Route>
     )
@@ -35,7 +35,8 @@ type PathType = {
     [key: string]: string;
 }
 export const paths: PathType = {
-    organizations: 'Организации'
+    organizations: 'Организации',
+    equipments: 'Инвентарь'
 }
 
 
