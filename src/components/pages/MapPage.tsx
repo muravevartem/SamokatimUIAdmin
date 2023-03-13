@@ -1,13 +1,11 @@
 import React from "react";
-import {authService} from "../../service/AuthService";
-import {MapComponent} from "../MapComponent";
+import {CurrentGeolocationsComponent} from "../GeolocationComponents";
 
 export const MapPage = () => {
-    let currentUser = authService.getCurrentUser();
 
     return (
         <>
-            <MapComponent/>
+            <CurrentGeolocationsComponent/>
         </>
 
     )

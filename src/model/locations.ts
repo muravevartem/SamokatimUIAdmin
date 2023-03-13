@@ -1,10 +1,22 @@
 import {Moment} from "moment";
+import {LatLng} from "leaflet";
 
-export type TransportTimePoint = {
-    id: string,
+
+export type EquipmentGeoPoint = {
     transportId: number,
     lat: number,
     lng: number,
-    timestamp: Moment
+}
 
+export type EquipmentGeoTrack = {
+    id: string
+    transportId: number,
+    lat: number,
+    lng: number,
+    addedAt: Moment
+}
+
+export type MapViewRequest = {
+    northEast: LatLng,
+    southWest: LatLng
 }

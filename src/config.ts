@@ -15,8 +15,8 @@ const generateServerUrl = (): Api => {
         }
     }
     return {
-        handbook: 'localhost:8080',
-        monitor: 'localhost:8081'
+        handbook: 'http://localhost:8080',
+        monitor: 'http://localhost:8081'
     };
 }
 
